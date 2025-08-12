@@ -577,6 +577,91 @@ player.SetVar("slideTitle", projectSlideTitle); // slideTitle güncelleniyor
 window.Script30 = function()
 {
   var player = GetPlayer();
+var s1=0;
+var s2=0;
+var s3=0;
+
+var sayilar = [player.GetVar("sayi1"), player.GetVar("sayi2"), player.GetVar("sayi3"),player.GetVar("sayi4"),player.GetVar("sayi5"),player.GetVar("sayi6")];
+var metinler = ["", 
+"A cybersecurity expert hired by a bank to find security vulnerabilities in the system and report them to management is what type of hacker?", 
+"An individual who independently finds a security flaw in a website, informs the site owner, but sometimes conducts unauthorized tests is what type of hacker?", 
+"A person who steals customer data from a company and sells it on the dark web is what type of hacker?", 
+"A security professional officially authorized to test a government agency’s network and prepare a report is what type of hacker?",
+"A person who discovers a software vulnerability and informs the vendor, but also publicly shares the flaw on their blog is what type of hacker?",
+"An attacker who breaks into a company’s network and demands ransom in exchange for returning critical data is what type of hacker?",
+
+
+];
+var alttext1,altext2;
+var soru_text = metinler;
+
+var filtered = sayilar.filter(x => x > 0);
+
+if (filtered.length === 0) {
+    // Eğer seçilebilecek sayı kalmadıysa
+    player.SetVar("soru_sec", 10);
+} else {
+    var sayi_sec = filtered[Math.floor(Math.random() * filtered.length)];
+    player.SetVar("soru_sec", sayi_sec);
+    player.SetVar("soru_text", soru_text[sayi_sec]);
+    player.SetVar("altTextSoru","Soru, " + soru_text[sayi_sec]);
+
+var text_map = {
+    1: ["White Hat", "Grey Hat","Black Hat"],
+    2: ["Grey Hat", "White Hat","Black Hat"],
+    3: ["Black Hat", "White Hat","Grey Hat"],
+    4: ["White Hat", "Black Hat","Grey Hat"],
+    5: ["Grey Hat", "White Hat","Black Hat"],
+    6: ["Black Hat", "White Hat","Grey Hat"],
+    };
+    
+
+// Tekrarlayan işlemleri fonksiyona çektik
+function handleSayiSec(sayi, metinler) {
+    player.SetVar(`sayi${sayi}`, 0);
+
+    var textler = ["", ...metinler];
+    var text = [];
+    var usedIndices = [];
+    
+    for (var i = 1; i < 4; i++) {
+        var sayi_sec;
+        do {
+            sayi_sec = [1, 2,3][Math.floor(Math.random() * 3)];
+        } while (usedIndices.includes(sayi_sec));
+
+        usedIndices.push(sayi_sec);
+        text[i] = textler[sayi_sec];
+        
+    }
+
+    for (var j = 1; j < 4; j++) {
+        player.SetVar("text" + j, text[j]);
+        
+    }
+
+    for (var k = 1; k <= 3; k++) {
+        for (var l = 0; l < textler.length; l++) {
+            if (text[k] === textler[l]) {
+                player.SetVar("s" + k, l);
+                 player.SetVar("alt_text"+k,"Tıkla, " + textler[l].toLowerCase());
+                break;
+            }
+        }
+    }
+}
+
+if (text_map[sayi_sec]) {
+    handleSayiSec(sayi_sec, text_map[sayi_sec]);
+}
+
+}
+
+}
+
+window.Script31 = function()
+{
+  var player = GetPlayer();
 var sayilar = [player.GetVar("sayi1"), player.GetVar("sayi2"), player.GetVar("sayi3"),player.GetVar("sayi4"),player.GetVar("sayi5"),player.GetVar("sayi6")];
 var metinler = ["", 
 "A cybersecurity expert hired by a bank to find security vulnerabilities in the system and report them to management is what type of hacker?", 
@@ -658,91 +743,6 @@ if (text_map[sayi_sec]) {
     handleSayiSec(sayi_sec, text_map[sayi_sec]);
 }
 
-
-}
-
-window.Script31 = function()
-{
-  var player = GetPlayer();
-var s1=0;
-var s2=0;
-var s3=0;
-
-var sayilar = [player.GetVar("sayi1"), player.GetVar("sayi2"), player.GetVar("sayi3"),player.GetVar("sayi4"),player.GetVar("sayi5"),player.GetVar("sayi6")];
-var metinler = ["", 
-"A cybersecurity expert hired by a bank to find security vulnerabilities in the system and report them to management is what type of hacker?", 
-"An individual who independently finds a security flaw in a website, informs the site owner, but sometimes conducts unauthorized tests is what type of hacker?", 
-"A person who steals customer data from a company and sells it on the dark web is what type of hacker?", 
-"A security professional officially authorized to test a government agency’s network and prepare a report is what type of hacker?",
-"A person who discovers a software vulnerability and informs the vendor, but also publicly shares the flaw on their blog is what type of hacker?",
-"An attacker who breaks into a company’s network and demands ransom in exchange for returning critical data is what type of hacker?",
-
-
-];
-var alttext1,altext2;
-var soru_text = metinler;
-
-var filtered = sayilar.filter(x => x > 0);
-
-if (filtered.length === 0) {
-    // Eğer seçilebilecek sayı kalmadıysa
-    player.SetVar("soru_sec", 10);
-} else {
-    var sayi_sec = filtered[Math.floor(Math.random() * filtered.length)];
-    player.SetVar("soru_sec", sayi_sec);
-    player.SetVar("soru_text", soru_text[sayi_sec]);
-    player.SetVar("altTextSoru","Soru, " + soru_text[sayi_sec]);
-
-var text_map = {
-    1: ["White Hat", "Grey Hat","Black Hat"],
-    2: ["Grey Hat", "White Hat","Black Hat"],
-    3: ["Black Hat", "White Hat","Grey Hat"],
-    4: ["White Hat", "Black Hat","Grey Hat"],
-    5: ["Grey Hat", "White Hat","Black Hat"],
-    6: ["Black Hat", "White Hat","Grey Hat"],
-    };
-    
-
-// Tekrarlayan işlemleri fonksiyona çektik
-function handleSayiSec(sayi, metinler) {
-    player.SetVar(`sayi${sayi}`, 0);
-
-    var textler = ["", ...metinler];
-    var text = [];
-    var usedIndices = [];
-    
-    for (var i = 1; i < 4; i++) {
-        var sayi_sec;
-        do {
-            sayi_sec = [1, 2,3][Math.floor(Math.random() * 3)];
-        } while (usedIndices.includes(sayi_sec));
-
-        usedIndices.push(sayi_sec);
-        text[i] = textler[sayi_sec];
-        
-    }
-
-    for (var j = 1; j < 4; j++) {
-        player.SetVar("text" + j, text[j]);
-        
-    }
-
-    for (var k = 1; k <= 3; k++) {
-        for (var l = 0; l < textler.length; l++) {
-            if (text[k] === textler[l]) {
-                player.SetVar("s" + k, l);
-                 player.SetVar("alt_text"+k,"Tıkla, " + textler[l].toLowerCase());
-                break;
-            }
-        }
-    }
-}
-
-if (text_map[sayi_sec]) {
-    handleSayiSec(sayi_sec, text_map[sayi_sec]);
-}
-
-}
 
 }
 
