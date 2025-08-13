@@ -416,8 +416,9 @@ var cevapA = [
   "A weakness in a system that can be exploited by attackers.",
   "A piece of code or technique used to take advantage of a vulnerability.",
   "Simulated cyberattacks conducted to evaluate system security.",
-  "The process of handling and mitigating the impact of a cybersecurity breach."
+   "The process of handling and mitigating the impact of a cybersecurity breach."
 ];
+
 
 // Aktif olanları filtrele
 var filtered = sayilar.filter(x => x > 0);
@@ -425,6 +426,9 @@ var filtered = sayilar.filter(x => x > 0);
 // Eğer hiç soru kalmadıysa tamamla'yı 1 yap
 if (filtered.length === 0) {
   player.SetVar("soru_sec", 100);
+  soru_text="You have completed all the concepts."
+  player.SetVar("soru_text", soru_text);
+  
 } else {
   // Rastgele bir soru seç
   var sayi_sec = filtered[Math.floor(Math.random() * filtered.length)];
@@ -435,7 +439,6 @@ soruSay++;
   player.SetVar("cevap", cevapA[sayi_sec]);
   player.SetVar("altTextSoru", "Kartı çevir, " + soru_text[sayi_sec]);
   player.SetVar("altTextDogru", "Kartı tekrar çevir, " + soru_text[sayi_sec]);
-  
   player.SetVar("soruSay",soruSay);
 
   // Tekrar seçilmesin diye sıfırla
@@ -485,9 +488,8 @@ var cevapA = [
   "A weakness in a system that can be exploited by attackers.",
   "A piece of code or technique used to take advantage of a vulnerability.",
   "Simulated cyberattacks conducted to evaluate system security.",
-   "The process of handling and mitigating the impact of a cybersecurity breach."
+  "The process of handling and mitigating the impact of a cybersecurity breach."
 ];
-
 
 // Aktif olanları filtrele
 var filtered = sayilar.filter(x => x > 0);
@@ -495,9 +497,6 @@ var filtered = sayilar.filter(x => x > 0);
 // Eğer hiç soru kalmadıysa tamamla'yı 1 yap
 if (filtered.length === 0) {
   player.SetVar("soru_sec", 100);
-  soru_text="You have completed all the concepts."
-  player.SetVar("soru_text", soru_text);
-  
 } else {
   // Rastgele bir soru seç
   var sayi_sec = filtered[Math.floor(Math.random() * filtered.length)];
@@ -508,6 +507,7 @@ soruSay++;
   player.SetVar("cevap", cevapA[sayi_sec]);
   player.SetVar("altTextSoru", "Kartı çevir, " + soru_text[sayi_sec]);
   player.SetVar("altTextDogru", "Kartı tekrar çevir, " + soru_text[sayi_sec]);
+  
   player.SetVar("soruSay",soruSay);
 
   // Tekrar seçilmesin diye sıfırla
