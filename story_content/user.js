@@ -1233,4 +1233,48 @@ if (sayilar.every(num => num === 1)) {
 
 }
 
+window.Script42 = function()
+{
+  var player = GetPlayer();
+
+
+$.ajax({
+  url: "https://script.google.com/macros/s/AKfycbyAwm3ucdtkgkZj5_jhQmZJdC_BbzXp04X2ay5uFGRtiqxqEG2i4NnDGsjcrUS8207_Jw/exec",
+  type: "POST",
+  data: {
+    "Name": player.GetVar("name"),
+    "Surname": player.GetVar("surname"),
+    
+    "Kavram1": player.GetVar("bildigim1"),
+    "Öğren1": player.GetVar("ogren1"),
+    "Kavram2": player.GetVar("bildigim2"),
+    "Öğren2": player.GetVar("ogren2"),
+    "Kavram3": player.GetVar("bildigim3"),
+    "Öğren3": player.GetVar("ogren3"),
+    "Kavram4": player.GetVar("bildigim4"),
+    "Öğren4": player.GetVar("ogren4"),
+    "Kavram5": player.GetVar("bildigim5"),
+    "Öğren5": player.GetVar("ogren5"),
+    "Kavram6": player.GetVar("bildigim6"),
+    "Öğren6": player.GetVar("ogren6"),
+    "Kavram7": player.GetVar("bildigim7"),
+    "Öğren7": player.GetVar("ogren7"),
+    "Tamamla": player.GetVar("Tamamlandi")
+    
+    
+      
+    
+    
+  },
+  success: function(data) {
+    console.log(data);
+  },
+  error: function(err) {
+    console.log('Hata:', err);
+  }
+});
+
+return false;
+}
+
 };
