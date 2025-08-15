@@ -1,0 +1,27 @@
+{
+  "version": "3.102.35072.0",
+  "course_id": "YEGITEK25TURK7010112",
+  "title": "Cybersecurity - Concept Map",
+  "thumbnail": "story_content/thumbnail.jpg",
+  "scenes": [
+    {
+      "title": "Okuma Kültürü Okuma Yolculuğu"
+    }
+  ],
+  "slides": [
+    {
+      "id": "6DINtOu5V5k",
+      "title": "Cybersecurity – Concept Map",
+      "scene_index": "1.1"
+    }
+  ],
+  "player": {
+    "name": "unified",
+    "width": 1940,
+    "height": 1123
+  },
+  "stage": {
+    "width": 1920,
+    "height": 1080
+  }
+}
